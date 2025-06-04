@@ -20,3 +20,4 @@ public class HealPlayerCommand implements CommandExecutor {
         return true;
     }
 }
+

@@ -6,3 +6,4 @@ public class Color {
         return text.replaceAll("&", "§");
     }
 }
+

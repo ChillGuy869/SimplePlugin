@@ -16,3 +16,4 @@ commands:
   heal:
     description: simple player healing
     usage: /<command>
+    alliances: bruh

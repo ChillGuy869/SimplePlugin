@@ -25,3 +25,4 @@ public class CoolStick implements CommandExecutor {
         return true;
     }
 }
+

@@ -13,7 +13,7 @@ import org.plugin.testPlugin2.managers.Color;
 
 import java.util.Objects;
 
-
+// root
 public final class TestPlugin2 extends JavaPlugin {
 
     @Override

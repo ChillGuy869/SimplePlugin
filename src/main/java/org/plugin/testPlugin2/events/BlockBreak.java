@@ -24,3 +24,4 @@ public class BlockBreak implements Listener {
         event.getPlayer().getInventory().addItem(item);
     }
 }
+

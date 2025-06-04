@@ -26,3 +26,4 @@ public class CoolSword implements CommandExecutor {
         return true;
     }
 }
+
