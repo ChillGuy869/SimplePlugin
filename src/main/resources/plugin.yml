@@ -1,0 +1,18 @@
+name: testPlugin2
+version: '1.0-SNAPSHOT'
+main: org.plugin.testPlugin2.TestPlugin2
+api-version: '1.20'
+commands:
+  sword:
+    description: This is a wonderful sword to troll your friend.
+    usage: /<command>
+  feed_me:
+    description: If u r hungry just use this command and everything would be nice. Homeless people would be happy to have such command in real life.
+    usage: /<command>
+    alliances: feed
+  stick:
+    description: super stick
+    usage: /<command>
+  heal:
+    description: simple player healing
+    usage: /<command>
