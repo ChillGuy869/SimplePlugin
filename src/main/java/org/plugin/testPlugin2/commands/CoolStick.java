@@ -1,5 +1,6 @@
 package org.plugin.testPlugin2.commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,6 +19,7 @@ public class CoolStick implements CommandExecutor {
             ItemStack item = new ItemStack(Material.STICK);
             ItemMeta itemMeta = item.getItemMeta();
             itemMeta.addEnchant(Enchantment.KNOCKBACK, 1000, true);
+            itemMeta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "BIG D Randy");
             item.setItemMeta(itemMeta);
             p.getInventory().addItem(item);
             p.sendMessage("You got a nice stick");

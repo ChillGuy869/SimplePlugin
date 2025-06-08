@@ -17,3 +17,6 @@ commands:
     description: simple player healing
     usage: /<command>
     alliances: bruh
+  tp:
+    description: simple teleport command
+    usage: /<command> <targetName>

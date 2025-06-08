@@ -19,13 +19,14 @@ public final class TestPlugin2 extends JavaPlugin {
     @Override
     public void onEnable() {
         //getServer().getPluginManager().registerEvents(new BlockBreak(), this);
-        getServer().getPluginManager().registerEvents(new ZombieSpawn(), this);
+        // getServer().getPluginManager().registerEvents(new ZombieSpawn(), this);
         getServer().getPluginManager().registerEvents(new EntityDeathEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerSpawn(), this);
         if (getCommand("sword") != null) getCommand("sword").setExecutor(new CoolSword());
         if (getCommand("feed_me") != null) getCommand("feed_me").setExecutor(new FeedPlayer());
         if (getCommand("stick") != null) getCommand("stick").setExecutor(new CoolStick());
         if (getCommand("heal") != null) getCommand("heal" ).setExecutor(new HealPlayerCommand());
+        if (getCommand("tp") != null) getCommand("tp" ).setExecutor(new HealPlayerCommand());
         getServer().getConsoleSender().sendMessage(Color.instance.convert("&aServer is working"));
     }
 

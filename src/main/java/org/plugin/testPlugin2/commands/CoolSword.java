@@ -19,6 +19,7 @@ public class CoolSword implements CommandExecutor {
             ItemMeta itemMeta = item.getItemMeta();
             itemMeta.addEnchant(Enchantment.SHARPNESS, 1000, true);
             itemMeta.addEnchant(Enchantment.LOOTING, 1000, true);
+            itemMeta.addEnchant(Enchantment.UNBREAKING, 1000, true);
             item.setItemMeta(itemMeta);
             p.getInventory().addItem(item);
             p.sendMessage("You got a nice sword");
