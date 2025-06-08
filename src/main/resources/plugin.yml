@@ -20,3 +20,4 @@ commands:
   tp:
     description: simple teleport command
     usage: /<command> <targetName>
+

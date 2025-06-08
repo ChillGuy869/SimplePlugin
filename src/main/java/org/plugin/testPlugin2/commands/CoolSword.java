@@ -14,6 +14,7 @@ public class CoolSword implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player) {
+
             Player p = (Player) sender;
             ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
             ItemMeta itemMeta = item.getItemMeta();

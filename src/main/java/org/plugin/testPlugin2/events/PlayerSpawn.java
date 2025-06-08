@@ -18,3 +18,4 @@ public class PlayerSpawn implements Listener {
     }
 }
 
+
