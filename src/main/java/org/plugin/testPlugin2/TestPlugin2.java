@@ -5,10 +5,7 @@ import org.plugin.testPlugin2.commands.CoolStick;
 import org.plugin.testPlugin2.commands.CoolSword;
 import org.plugin.testPlugin2.commands.FeedPlayer;
 import org.plugin.testPlugin2.commands.HealPlayerCommand;
-import org.plugin.testPlugin2.events.BlockBreak;
-import org.plugin.testPlugin2.events.EntityDeathEvent;
-import org.plugin.testPlugin2.events.PlayerSpawn;
-import org.plugin.testPlugin2.events.ZombieSpawn;
+import org.plugin.testPlugin2.events.*;
 import org.plugin.testPlugin2.managers.Color;
 
 import java.util.Objects;
@@ -22,6 +19,7 @@ public final class TestPlugin2 extends JavaPlugin {
         // getServer().getPluginManager().registerEvents(new ZombieSpawn(), this);
         getServer().getPluginManager().registerEvents(new EntityDeathEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerSpawn(), this);
+        getServer().getPluginManager().registerEvents(new PlayerFallDamageEvent(), this);
         if (getCommand("sword") != null) getCommand("sword").setExecutor(new CoolSword());
         if (getCommand("feed_me") != null) getCommand("feed_me").setExecutor(new FeedPlayer());
         if (getCommand("stick") != null) getCommand("stick").setExecutor(new CoolStick());
