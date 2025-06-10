@@ -20,4 +20,9 @@ commands:
   tp:
     description: simple teleport command
     usage: /<command> <targetName>
-
+  strike:
+    description: strike your friend with a lightning!
+    usage: /<command> <targetName>
+  armor:
+    description: super armor
+    usage: /<command>
