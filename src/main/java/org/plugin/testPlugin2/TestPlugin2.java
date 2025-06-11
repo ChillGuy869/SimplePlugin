@@ -1,5 +1,6 @@
 package org.plugin.testPlugin2;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.plugin.testPlugin2.commands.*;
@@ -10,13 +11,17 @@ import java.util.Objects;
 
 // root
 public final class TestPlugin2 extends JavaPlugin {
+    private Dotenv config;
 
     @Override
     public void onEnable() {
+
+        config = Dotenv.configure().load();
+
         //getServer().getPluginManager().registerEvents(new BlockBreak(), this);
         // getServer().getPluginManager().registerEvents(new ZombieSpawn(), this);
         getServer().getPluginManager().registerEvents(new EntityDeathEvent(), this);
-        getServer().getPluginManager().registerEvents(new PlayerSpawn(), this);
+        getServer().getPluginManager().registerEvents(new PlayerSpawn(config), this);
         getServer().getPluginManager().registerEvents(new PlayerFallDamageEvent(), this);
 
         JavaPlugin plugin = JavaPlugin.getProvidingPlugin(getClass());

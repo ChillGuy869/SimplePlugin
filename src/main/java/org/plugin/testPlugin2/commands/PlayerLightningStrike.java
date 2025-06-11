@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.plugin.testPlugin2.events.PlayerSpawn;
 
 public class PlayerLightningStrike implements CommandExecutor {
 
@@ -21,15 +22,23 @@ public class PlayerLightningStrike implements CommandExecutor {
 
         Player p = (Player) sender;
 
+        String rank = PlayerSpawn.ranks.get(p.getName());
+        if (!"Admin".equals(rank)) {
+            p.sendMessage("This command can be used only by people with admin rank");
+            return false;
+        }
+
+
         if (!command.getName().equalsIgnoreCase("strike")) {
             return false;
         }
 
 
         if (args.length < 1) {
-            p.sendMessage("Usage: /strike <playername>");
+            // p.sendMessage("Usage: /strike <playername>");
             return false;
         }
+
 
         String targetName = args[0];
         Player target = Bukkit.getPlayerExact(targetName);
