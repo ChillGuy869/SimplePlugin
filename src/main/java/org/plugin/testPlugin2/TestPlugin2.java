@@ -6,22 +6,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.plugin.testPlugin2.commands.*;
 import org.plugin.testPlugin2.events.*;
 import org.plugin.testPlugin2.managers.Color;
+import org.plugin.testPlugin2.events.PlayerSpawn.*;
 
-import java.util.Objects;
 
 // root
 public final class TestPlugin2 extends JavaPlugin {
     private Dotenv config;
+    private PlayerSpawn playerSpawn;
+
 
     @Override
     public void onEnable() {
 
         config = Dotenv.configure().load();
+        playerSpawn = new PlayerSpawn(config, this);
 
         //getServer().getPluginManager().registerEvents(new BlockBreak(), this);
         // getServer().getPluginManager().registerEvents(new ZombieSpawn(), this);
         getServer().getPluginManager().registerEvents(new EntityDeathEvent(), this);
-        getServer().getPluginManager().registerEvents(new PlayerSpawn(config), this);
+        getServer().getPluginManager().registerEvents(playerSpawn, this);
         getServer().getPluginManager().registerEvents(new PlayerFallDamageEvent(), this);
 
         JavaPlugin plugin = JavaPlugin.getProvidingPlugin(getClass());
@@ -37,12 +40,13 @@ public final class TestPlugin2 extends JavaPlugin {
             if (getCommand("armor") != null) getCommand("armor" ).setExecutor(new CoolArmor());
         });
 
-
+        playerSpawn.loadRanks();
         getServer().getConsoleSender().sendMessage(Color.instance.convert("&aServer is working"));
     }
 
     @Override
     public void onDisable() {
+        playerSpawn.saveRanks();
         getServer().getConsoleSender().sendMessage(Color.instance.convert("&cServer is down"));
     }
 }

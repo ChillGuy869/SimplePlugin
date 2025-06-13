@@ -2,13 +2,21 @@ package org.plugin.testPlugin2.events;
 
 
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+import java.lang.reflect.Type;
 
 
 // player spawn
@@ -16,9 +24,40 @@ public class PlayerSpawn implements Listener {
 
     private Dotenv config;
     public static HashMap<String, String> ranks = new HashMap<>();
+    private final JavaPlugin plugin;
 
-    public PlayerSpawn(Dotenv config) {
+    public PlayerSpawn(Dotenv config, JavaPlugin plugin) {
         this.config = config;
+        this.plugin = plugin;
+    }
+
+    public void saveRanks() {
+        Gson gson = new Gson();
+        File file = new File("C:/Users/Andrew/IdeaProjects/testPlugin2/ranks.json");
+        try {
+            try (FileWriter writer = new FileWriter(file)) {
+                gson.toJson(ranks, writer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadRanks() {
+        String path = config.get("PATH");
+        Gson gson = new Gson();
+        Type type = new TypeToken<HashMap<String, String>>() {}.getType();
+        File file = new File(path);
+        if (!file.exists()) {
+            ranks = new HashMap<>();
+            return;
+        }
+        try (FileReader reader = new FileReader(file)) {
+            ranks = gson.fromJson(reader, type);
+        } catch (IOException e) {
+            e.printStackTrace();
+            ranks = new HashMap<>();
+        }
     }
 
     @EventHandler
@@ -41,6 +80,7 @@ public class PlayerSpawn implements Listener {
         else {
             ranks.put(name, "None");
         }
+        saveRanks();
     }
 }
 
