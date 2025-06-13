@@ -21,6 +21,7 @@ public final class TestPlugin2 extends JavaPlugin {
         config = Dotenv.configure().load();
         playerSpawn = new PlayerSpawn(config, this);
 
+
         //getServer().getPluginManager().registerEvents(new BlockBreak(), this);
         // getServer().getPluginManager().registerEvents(new ZombieSpawn(), this);
         getServer().getPluginManager().registerEvents(new EntityDeathEvent(), this);
