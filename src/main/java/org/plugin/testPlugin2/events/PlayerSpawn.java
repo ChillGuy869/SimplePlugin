@@ -30,10 +30,11 @@ public class PlayerSpawn implements Listener {
         this.config = config;
         this.plugin = plugin;
     }
+    String path = config.get("PATH");
 
     public void saveRanks() {
         Gson gson = new Gson();
-        File file = new File("C:/Users/Andrew/IdeaProjects/testPlugin2/ranks.json");
+        File file = new File(path);
         try {
             try (FileWriter writer = new FileWriter(file)) {
                 gson.toJson(ranks, writer);
@@ -44,7 +45,6 @@ public class PlayerSpawn implements Listener {
     }
 
     public void loadRanks() {
-        String path = config.get("PATH");
         Gson gson = new Gson();
         Type type = new TypeToken<HashMap<String, String>>() {}.getType();
         File file = new File(path);
