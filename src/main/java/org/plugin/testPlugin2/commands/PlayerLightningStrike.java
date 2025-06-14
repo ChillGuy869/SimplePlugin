@@ -24,7 +24,7 @@ public class PlayerLightningStrike implements CommandExecutor {
 
         String rank = PlayerSpawn.ranks.get(p.getName());
         if (!"Admin".equals(rank)) {
-            p.sendMessage("This command can be used only by people with admin rank");
+            p.sendMessage("This command can be used only by people with Admin rank");
             return false;
         }
 

@@ -11,8 +11,10 @@ public class FeedPlayer implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
+
             p.setFoodLevel(20);
             p.setSaturation(20);
+
             p.sendMessage("Bon appetit!");
         }
         return true;

@@ -22,6 +22,7 @@ import java.lang.reflect.Type;
 // player spawn
 public class PlayerSpawn implements Listener {
 
+    private final String path;
     private Dotenv config;
     public static HashMap<String, String> ranks = new HashMap<>();
     private final JavaPlugin plugin;
@@ -29,8 +30,8 @@ public class PlayerSpawn implements Listener {
     public PlayerSpawn(Dotenv config, JavaPlugin plugin) {
         this.config = config;
         this.plugin = plugin;
+        this.path = config.get("PATH");
     }
-    String path = config.get("PATH");
 
     public void saveRanks() {
         Gson gson = new Gson();

@@ -37,9 +37,10 @@ public final class TestPlugin2 extends JavaPlugin {
             if (getCommand("feed_me") != null) getCommand("feed_me").setExecutor(new FeedPlayer());
             if (getCommand("stick") != null) getCommand("stick").setExecutor(new CoolStick());
             if (getCommand("heal") != null) getCommand("heal" ).setExecutor(new HealPlayerCommand());
-            if (getCommand("tp") != null) getCommand("tp" ).setExecutor(new HealPlayerCommand());
+            if (getCommand("tp") != null) getCommand("tp" ).setExecutor(new TeleportPlayer());
             if (getCommand("strike") != null) getCommand("strike" ).setExecutor(new PlayerLightningStrike());
             if (getCommand("armor") != null) getCommand("armor" ).setExecutor(new CoolArmor());
+            if (getCommand("set_rank") != null) getCommand("set_rank" ).setExecutor(new SetRank(playerSpawn));
         });
 
         playerSpawn.loadRanks();

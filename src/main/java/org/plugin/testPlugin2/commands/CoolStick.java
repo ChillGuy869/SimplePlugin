@@ -16,10 +16,12 @@ public class CoolStick implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
+
             ItemStack item = new ItemStack(Material.STICK);
             ItemMeta itemMeta = item.getItemMeta();
             itemMeta.addEnchant(Enchantment.KNOCKBACK, 1000, true);
             itemMeta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "BIG D Randy");
+
             item.setItemMeta(itemMeta);
             p.getInventory().addItem(item);
             p.sendMessage("You got a nice stick");

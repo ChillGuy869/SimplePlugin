@@ -26,3 +26,7 @@ commands:
   armor:
     description: super armor
     usage: /<command>
+  set_rank:
+    description: command only for admins
+    usage: /<command> <targetName> <targetRank>
+

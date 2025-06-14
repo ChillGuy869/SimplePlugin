@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
+import org.plugin.testPlugin2.events.PlayerSpawn;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,6 +26,12 @@ public class CoolArmor implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+
+        String rank = PlayerSpawn.ranks.get(player.getName());
+        if (!"VIP".equals(rank) && !"Admin".equals(rank)) {
+            player.sendMessage("This command can be used only by people with VIP or Admin rank");
+            return false;
+        }
 
         // Define armor and their enchantments
         giveItem(player, Material.NETHERITE_HELMET, new LinkedHashMap<Enchantment, Integer>() {{
