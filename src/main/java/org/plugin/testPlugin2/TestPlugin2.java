@@ -2,6 +2,7 @@ package org.plugin.testPlugin2;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.plugin.testPlugin2.commands.*;
 import org.plugin.testPlugin2.events.*;
@@ -13,6 +14,8 @@ import org.plugin.testPlugin2.events.PlayerSpawn.*;
 public final class TestPlugin2 extends JavaPlugin {
     private Dotenv config;
     private PlayerSpawn playerSpawn;
+
+
 
 
     @Override
@@ -28,6 +31,7 @@ public final class TestPlugin2 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityDeathEvent(), this);
         getServer().getPluginManager().registerEvents(playerSpawn, this);
         getServer().getPluginManager().registerEvents(new PlayerFallDamageEvent(), this);
+        getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
 
         JavaPlugin plugin = JavaPlugin.getProvidingPlugin(getClass());
 
@@ -41,6 +45,7 @@ public final class TestPlugin2 extends JavaPlugin {
             if (getCommand("strike") != null) getCommand("strike" ).setExecutor(new PlayerLightningStrike());
             if (getCommand("armor") != null) getCommand("armor" ).setExecutor(new CoolArmor());
             if (getCommand("set_rank") != null) getCommand("set_rank" ).setExecutor(new SetRank(playerSpawn));
+            if (getCommand("bow") != null) getCommand("bow" ).setExecutor(new TeleportBow(this));
         });
 
         playerSpawn.loadRanks();

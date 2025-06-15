@@ -29,4 +29,7 @@ commands:
   set_rank:
     description: command only for admins
     usage: /<command> <targetName> <targetRank>
+  bow:
+    description: teleport bow
+    usage: /<command>
 
