@@ -18,7 +18,7 @@ public class HealPlayerCommand implements CommandExecutor {
             String rank = PlayerSpawn.ranks.get(p.getName());
             if (!"VIP".equals(rank) && !"Admin".equals(rank)) {
                 p.sendMessage("This command can be used only by people with VIP or Admin rank");
-                return false;
+                return true;
             }
 
             p.setHealth(20);

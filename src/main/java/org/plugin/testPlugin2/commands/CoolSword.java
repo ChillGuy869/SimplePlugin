@@ -21,7 +21,7 @@ public class CoolSword implements CommandExecutor {
             String rank = PlayerSpawn.ranks.get(p.getName());
             if (!"Admin".equals(rank)) {
                 p.sendMessage("This command can be used only by people with admin rank");
-                return false;
+                return true;
             }
 
             ItemStack item = new ItemStack(Material.NETHERITE_SWORD);

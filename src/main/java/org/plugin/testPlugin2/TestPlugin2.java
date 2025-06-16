@@ -23,7 +23,8 @@ public final class TestPlugin2 extends JavaPlugin {
 
         config = Dotenv.configure().load();
         playerSpawn = new PlayerSpawn(config, this);
-
+        playerSpawn.loadRanks();
+        getDataFolder().mkdirs();
 
 
         //getServer().getPluginManager().registerEvents(new BlockBreak(), this);
@@ -32,6 +33,7 @@ public final class TestPlugin2 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(playerSpawn, this);
         getServer().getPluginManager().registerEvents(new PlayerFallDamageEvent(), this);
         getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
+        getServer().getPluginManager().registerEvents(new NonVisibleCommands(playerSpawn), this);
 
         JavaPlugin plugin = JavaPlugin.getProvidingPlugin(getClass());
 
@@ -48,7 +50,6 @@ public final class TestPlugin2 extends JavaPlugin {
             if (getCommand("bow") != null) getCommand("bow" ).setExecutor(new TeleportBow(this));
         });
 
-        playerSpawn.loadRanks();
         getServer().getConsoleSender().sendMessage(Color.instance.convert("&aServer is working"));
     }
 

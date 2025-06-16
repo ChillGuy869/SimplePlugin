@@ -6,30 +6,48 @@ commands:
   sword:
     description: This is a wonderful sword to troll your friend.
     usage: /<command>
+    permission: testPlugin2.sword
+    permission-default: false
   feed_me:
     description: If u r hungry just use this command and everything would be nice. Homeless people would be happy to have such command in real life.
     usage: /<command>
     alliances: feed
+    permission: testPlugin2.feed_me
+    permission-default: true
   stick:
     description: super stick
     usage: /<command>
+    permission: testPlugin2.stick
+    permission-default: true
   heal:
     description: simple player healing
     usage: /<command>
     alliances: bruh
+    permission: testPlugin2.heal
+    permission-default: false
   tp:
     description: simple teleport command
     usage: /<command> <targetName>
+    permission: testPlugin2.tp
+    permission-default: false
   strike:
     description: strike your friend with a lightning!
     usage: /<command> <targetName>
+    permission: testPlugin2.strike
+    permission-default: false
   armor:
     description: super armor
     usage: /<command>
+    permission: testPlugin2.armor
+    permission-default: false
   set_rank:
     description: command only for admins
     usage: /<command> <targetName> <targetRank>
+    permission: testPlugin2.set_rank
+    permission-default: false
   bow:
     description: teleport bow
     usage: /<command>
+    permission: testPlugin2.bow
+    permission-default: false
 

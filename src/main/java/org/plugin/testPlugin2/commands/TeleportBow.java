@@ -35,7 +35,7 @@ public class TeleportBow implements CommandExecutor {
         String rank = PlayerSpawn.ranks.get(player.getName());
         if (!"Admin".equals(rank)) {
             player.sendMessage("This command can be used only by people with Admin rank");
-            return false;
+            return true;
         }
 
         ItemStack bow = new ItemStack(Material.BOW);

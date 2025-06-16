@@ -22,7 +22,7 @@ import java.lang.reflect.Type;
 // player spawn
 public class PlayerSpawn implements Listener {
 
-    private final String path;
+    private final File file;
     private Dotenv config;
     public static HashMap<String, String> ranks = new HashMap<>();
     private final JavaPlugin plugin;
@@ -30,16 +30,13 @@ public class PlayerSpawn implements Listener {
     public PlayerSpawn(Dotenv config, JavaPlugin plugin) {
         this.config = config;
         this.plugin = plugin;
-        this.path = config.get("PATH");
+        this.file = new File(plugin.getDataFolder(), "ranks.json");
     }
 
     public void saveRanks() {
         Gson gson = new Gson();
-        File file = new File(path);
-        try {
-            try (FileWriter writer = new FileWriter(file)) {
-                gson.toJson(ranks, writer);
-            }
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(ranks, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +45,6 @@ public class PlayerSpawn implements Listener {
     public void loadRanks() {
         Gson gson = new Gson();
         Type type = new TypeToken<HashMap<String, String>>() {}.getType();
-        File file = new File(path);
         if (!file.exists()) {
             ranks = new HashMap<>();
             return;
@@ -60,6 +56,7 @@ public class PlayerSpawn implements Listener {
             ranks = new HashMap<>();
         }
     }
+
 
 
 
@@ -75,15 +72,14 @@ public class PlayerSpawn implements Listener {
         player.sendTitle("Hello, " + name + "!", null, 10, 70, 20);
         // player.sendMessage("Hello, " + name + "!");
 
-        if (name.equals(adminName)) {
-            ranks.put(name, "Admin");
+        if (!ranks.containsKey(name)) {
+            if (name.equals(adminName)) {
+                ranks.put(name, "Admin");
+            } else {
+                ranks.put(name, "None");
+            }
+            saveRanks();
         }
-
-
-        else {
-            ranks.put(name, "None");
-        }
-        saveRanks();
     }
 }
 

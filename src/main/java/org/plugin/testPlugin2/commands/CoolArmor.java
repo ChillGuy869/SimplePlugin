@@ -30,7 +30,7 @@ public class CoolArmor implements CommandExecutor {
         String rank = PlayerSpawn.ranks.get(player.getName());
         if (!"VIP".equals(rank) && !"Admin".equals(rank)) {
             player.sendMessage("This command can be used only by people with VIP or Admin rank");
-            return false;
+            return true;
         }
 
         // Define armor and their enchantments

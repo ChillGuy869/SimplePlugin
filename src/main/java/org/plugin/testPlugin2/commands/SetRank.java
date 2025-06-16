@@ -29,12 +29,13 @@ public class SetRank implements CommandExecutor {
         Player p = (Player) sender;
 
         String rank = PlayerSpawn.ranks.get(p.getName());
-        if (!"Admin".equals(rank)) {
-            p.sendMessage("This command can only be used by Admins.");
-            return false;
+        if (!"Admin".equalsIgnoreCase(rank) && !"VIP".equalsIgnoreCase(rank)) {
+            p.sendMessage("This command can only be used by Admins or VIPs.");
+            return true;
         }
 
         if (args.length < 2) {
+            p.sendMessage("Usage: /set_rank <player> <rank>");
             return false;
         }
 
@@ -44,13 +45,14 @@ public class SetRank implements CommandExecutor {
 
         if (target != null && target.isOnline()) {
             PlayerSpawn.ranks.put(targetName, targetRank);
-            playerSpawn.saveRanks(); // ✅ Save updated ranks
-            p.sendMessage("Rank set to " + targetRank + " for " + targetName);
+            playerSpawn.saveRanks(); // ✅ Save after setting
+            p.sendMessage("Set " + targetName + "'s rank to " + targetRank);
         } else {
             p.sendMessage("Player not found or not online.");
         }
 
         return true;
     }
+
 }
 
