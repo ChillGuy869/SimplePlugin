@@ -34,6 +34,7 @@ public final class TestPlugin2 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerFallDamageEvent(), this);
         getServer().getPluginManager().registerEvents(new TeleportBowEvent(this), this);
         getServer().getPluginManager().registerEvents(new NonVisibleCommands(playerSpawn), this);
+        getServer().getPluginManager().registerEvents(new PlayerLookingAtTheSunEvent(), this);
 
         JavaPlugin plugin = JavaPlugin.getProvidingPlugin(getClass());
 
