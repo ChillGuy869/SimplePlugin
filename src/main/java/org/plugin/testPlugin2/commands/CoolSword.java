@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.plugin.testPlugin2.events.PlayerSpawn;
 
 public class CoolSword implements CommandExecutor {
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (sender instanceof Player) {
@@ -24,14 +25,19 @@ public class CoolSword implements CommandExecutor {
                 return true;
             }
 
-            ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
-            ItemMeta itemMeta = item.getItemMeta();
-            itemMeta.addEnchant(Enchantment.SHARPNESS, 1000, true);
-            itemMeta.addEnchant(Enchantment.LOOTING, 1000, true);
-            itemMeta.addEnchant(Enchantment.UNBREAKING, 1000, true);
-            item.setItemMeta(itemMeta);
+            ItemStack sword = new ItemStack(Material.NETHERITE_SWORD);
+            ItemMeta itemMeta = sword.getItemMeta();
 
-            p.getInventory().addItem(item);
+            if (itemMeta != null) {
+                itemMeta.setDisplayName("§bCool Sword");
+                itemMeta.addEnchant(Enchantment.SHARPNESS, 1000, true);
+                itemMeta.addEnchant(Enchantment.LOOTING, 1000, true);
+                itemMeta.addEnchant(Enchantment.UNBREAKING, 1000, true);
+                sword.setItemMeta(itemMeta);
+            }
+
+
+            p.getInventory().addItem(sword);
             p.sendMessage("You got a nice sword");
         }
         return true;

@@ -49,6 +49,7 @@ public final class TestPlugin2 extends JavaPlugin {
             if (getCommand("armor") != null) getCommand("armor" ).setExecutor(new CoolArmor());
             if (getCommand("set_rank") != null) getCommand("set_rank" ).setExecutor(new SetRank(playerSpawn));
             if (getCommand("bow") != null) getCommand("bow" ).setExecutor(new TeleportBow(this));
+            if (getCommand("villager") != null) getCommand("villager" ).setExecutor(new CustomVillager(this));
         });
 
         getServer().getConsoleSender().sendMessage(Color.instance.convert("&aServer is working"));
